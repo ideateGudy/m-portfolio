@@ -38,8 +38,8 @@ const Hero = () => {
 
           
           <TextGenerateEffect
-            duration={0.8}
-            filter={true}
+            duration={3}
+            filter={false}
             words="Transforming Concepts into Seamless User Experiences"
             className="text-center text-[40px] md:text-5xl lg:text-6xl"
           />
