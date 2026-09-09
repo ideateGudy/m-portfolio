@@ -1,0 +1,80 @@
+✓ Lockfile passes supply-chain policies (verified 2h ago)
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Progress: resolved 27, reused 6, downloaded 0, added 0
+Progress: resolved 28, reused 12, downloaded 0, added 0
+Progress: resolved 74, reused 18, downloaded 0, added 0
+Progress: resolved 138, reused 24, downloaded 0, added 0
+Progress: resolved 172, reused 35, downloaded 0, added 0
+Progress: resolved 177, reused 36, downloaded 0, added 0
+Progress: resolved 186, reused 92, downloaded 0, added 0
+Progress: resolved 246, reused 110, downloaded 0, added 0
+Progress: resolved 371, reused 128, downloaded 0, added 0
+Progress: resolved 469, reused 145, downloaded 0, added 0
+Progress: resolved 482, reused 171, downloaded 0, added 0
+Progress: resolved 491, reused 178, downloaded 0, added 0
+Progress: resolved 493, reused 187, downloaded 0, added 0
+Progress: resolved 493, reused 189, downloaded 0, added 0
+Progress: resolved 625, reused 212, downloaded 1, added 0
+Progress: resolved 706, reused 244, downloaded 1, added 0
+Progress: resolved 807, reused 357, downloaded 1, added 0
+Progress: resolved 827, reused 404, downloaded 6, added 0
+Progress: resolved 829, reused 417, downloaded 7, added 0
+Progress: resolved 840, reused 499, downloaded 9, added 0
+Progress: resolved 855, reused 605, downloaded 11, added 0
+Progress: resolved 861, reused 668, downloaded 12, added 0
+Progress: resolved 861, reused 695, downloaded 15, added 0
+Packages: +135 -47
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++---------------------
+Progress: resolved 861, reused 699, downloaded 17, added 0
+Progress: resolved 861, reused 699, downloaded 18, added 0
+Progress: resolved 861, reused 699, downloaded 19, added 0
+Progress: resolved 861, reused 699, downloaded 20, added 0
+Progress: resolved 861, reused 700, downloaded 22, added 0
+Progress: resolved 861, reused 700, downloaded 27, added 0
+Progress: resolved 861, reused 700, downloaded 28, added 0
+Progress: resolved 861, reused 700, downloaded 29, added 0
+Progress: resolved 861, reused 700, downloaded 30, added 2
+Progress: resolved 861, reused 700, downloaded 32, added 4
+Progress: resolved 861, reused 700, downloaded 36, added 4
+Progress: resolved 861, reused 700, downloaded 51, added 4
+Progress: resolved 861, reused 700, downloaded 55, added 8
+Progress: resolved 861, reused 700, downloaded 55, added 12
+Progress: resolved 861, reused 700, downloaded 55, added 15
+Progress: resolved 861, reused 700, downloaded 55, added 16
+Progress: resolved 861, reused 700, downloaded 55, added 27
+Progress: resolved 861, reused 700, downloaded 55, added 28
+Progress: resolved 861, reused 700, downloaded 56, added 34
+Progress: resolved 861, reused 700, downloaded 56, added 38
+Progress: resolved 861, reused 700, downloaded 56, added 43
+Progress: resolved 861, reused 700, downloaded 56, added 48
+Progress: resolved 861, reused 700, downloaded 56, added 49
+Progress: resolved 861, reused 700, downloaded 56, added 50
+Progress: resolved 861, reused 700, downloaded 56, added 51
+Progress: resolved 861, reused 700, downloaded 56, added 52
+Progress: resolved 861, reused 700, downloaded 56, added 53
+Progress: resolved 861, reused 700, downloaded 56, added 59
+Progress: resolved 861, reused 700, downloaded 56, added 60
+Progress: resolved 861, reused 700, downloaded 56, added 64
+Progress: resolved 861, reused 700, downloaded 56, added 70
+Progress: resolved 861, reused 700, downloaded 56, added 71
+Progress: resolved 861, reused 700, downloaded 56, added 75
+Progress: resolved 861, reused 700, downloaded 56, added 76
+Progress: resolved 861, reused 700, downloaded 56, added 85
+Progress: resolved 861, reused 700, downloaded 56, added 95
+Progress: resolved 861, reused 700, downloaded 56, added 100
+Progress: resolved 861, reused 700, downloaded 56, added 106
+Progress: resolved 861, reused 700, downloaded 56, added 107
+Progress: resolved 861, reused 700, downloaded 56, added 109
+Progress: resolved 861, reused 700, downloaded 56, added 114
+Progress: resolved 861, reused 700, downloaded 56, added 133
+Progress: resolved 861, reused 700, downloaded 56, added 134
+Progress: resolved 861, reused 700, downloaded 56, added 135
+Progress: resolved 861, reused 700, downloaded 56, added 135, done
+[WARN] Issues with peer dependencies found. Run "pnpm peers check" to list them.
+
+dependencies:
++ @sentry/nextjs 10.73.0
+
+[ERR_PNPM_IGNORED_BUILDS] Ignored build scripts: @sentry/cli@2.58.6
+
+Run "pnpm approve-builds" to pick which dependencies should be allowed to run scripts.
