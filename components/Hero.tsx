@@ -6,7 +6,7 @@ import { FaLocationArrow } from "react-icons/fa";
 
 const Hero = () => {
   return (
-    <div className="pb-20 pt-10" id="home">
+    <div className="pb-20 pt-10 " id="home">
       <div>
         <Spotlight
           className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
@@ -31,7 +31,7 @@ const Hero = () => {
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white mask-[radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black-100"></div>
       </div>
       <div className="flex justify-center relative my-20 z-10">
-        <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center">
+        <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center mt-10 md:mt-0">
           <p className="uppercase tracking-widest text-xs text-center text-blue-100 max-w-80">
             From Ideas to Powerful Web Applications
           </p>
@@ -44,7 +44,7 @@ const Hero = () => {
             className="text-center text-[40px] md:text-5xl lg:text-6xl"
           />
 
-          <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
+          <p className="text-center md:tracking-wider my-4 text-sm md:text-lg lg:text-2xl">
             Hi👋! I&apos;m Goodnews, a Fullstack Developer.
           </p>
 
