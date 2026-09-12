@@ -16,15 +16,11 @@ Sentry.init({
     }),
   ],
 
-  // Define how likely traces are sampled. Adjust this value in production, or use tracesSampler for greater control.
-  tracesSampleRate: 1,
+  // Sample traces moderately to minimize client instrumentation performance cost
+  tracesSampleRate: process.env.NODE_ENV === "production" ? 0.2 : 1.0,
 
-  // Define how likely Replay events are sampled.
-  // This sets the sample rate to be 10%. You may want this to be 100% while
-  // in development and sample at a lower rate in production
-  replaysSessionSampleRate: 0.1,
-
-  // Define how likely Replay events are sampled when an error occurs.
+  // Sample Replay primarily when an error occurs to save CPU and network bandwidth
+  replaysSessionSampleRate: 0,
   replaysOnErrorSampleRate: 1.0,
 
   dataCollection: {

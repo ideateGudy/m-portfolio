@@ -45,11 +45,19 @@ const RecentProjects = () => {
                   <img
                     src="/bg.png"
                     alt="card backdrop"
+                    loading="lazy"
+                    decoding="async"
+                    width={464}
+                    height={300}
                     className="absolute inset-0 w-full h-full object-cover opacity-50"
                   />
                   <img
                     src={img}
                     alt={title}
+                    loading="lazy"
+                    decoding="async"
+                    width={464}
+                    height={300}
                     className="z-10 absolute bottom-0 max-h-[85%] w-auto object-contain transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute top-3 right-3 z-20">
@@ -87,6 +95,10 @@ const RecentProjects = () => {
                       <img
                         src={icon}
                         alt="tech icon"
+                        loading="lazy"
+                        decoding="async"
+                        width={16}
+                        height={16}
                         className="w-4 h-4 object-contain"
                       />
                     </div>

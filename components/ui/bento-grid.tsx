@@ -2,12 +2,19 @@
 import { cn } from "@/lib/utils";
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 import MagicButton from "./magic-button";
-import { Lottie } from "lottie-react";
-import GridGlobe from "./grid-globe";
+import dynamic from "next/dynamic";
 import { IoCopyOutline } from "react-icons/io5";
-import { useState } from "react";
-import animationData from "@/data/confetti.json";
+import { useState, useEffect } from "react";
 import { contactEmail } from "@/data";
+
+const GridGlobe = dynamic(() => import("./grid-globe"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-full flex items-center justify-center">
+      <div className="w-20 h-20 rounded-full border border-purple/20 bg-purple/5 animate-pulse" />
+    </div>
+  ),
+});
 
 export const BentoGrid = ({
   className,
@@ -52,9 +59,25 @@ export const BentoGridItem = ({
 
   const [copied, setCopied] = useState<boolean>(false);
   const [confettiKey, setConfettiKey] = useState<number>(0);
+  const [LottieComponent, setLottieComponent] = useState<any>(null);
+  const [confettiData, setConfettiData] = useState<any>(null);
 
-  const handleCopy = () => {
+  const handleCopy = async () => {
     navigator.clipboard.writeText(contactEmail);
+
+    if (!LottieComponent || !confettiData) {
+      try {
+        const [lottieModule, confettiModule] = await Promise.all([
+          import("lottie-react"),
+          import("@/data/confetti.json"),
+        ]);
+        const Component = (lottieModule as any).Lottie || (lottieModule as any).default || lottieModule;
+        setLottieComponent(() => Component);
+        setConfettiData((confettiModule as any).default || confettiModule);
+      } catch (err) {
+        console.error("Failed to load confetti animation", err);
+      }
+    }
 
     // Reset/remount the confetti animation every time
     setConfettiKey((prev) => prev + 1);
@@ -84,6 +107,8 @@ export const BentoGridItem = ({
             <img
               src={img}
               alt={img}
+              loading="lazy"
+              decoding="async"
               className={cn(imgClassName, "object-cover object-center ")}
             />
           )}
@@ -98,7 +123,8 @@ export const BentoGridItem = ({
             <img
               src={spareImg}
               alt={spareImg}
-              //   width={220}
+              loading="lazy"
+              decoding="async"
               className="object-cover object-center w-full h-full"
             />
           )}
@@ -164,18 +190,18 @@ export const BentoGridItem = ({
                   copied ? "block" : "block"
                 }`}
               >
-                {/* <img src="/confetti.gif" alt="confetti" /> */}
-                <Lottie
-                  key={confettiKey}
-                  src={animationData}
-                  loop={copied}
-                  autoplay={copied}
-                  style={{
-                    width: 400,
-                    height: 200,
-                    // objectFit: "cover",
-                  }}
-                />
+                {copied && LottieComponent && confettiData && (
+                  <LottieComponent
+                    key={confettiKey}
+                    src={confettiData}
+                    loop={copied}
+                    autoplay={copied}
+                    style={{
+                      width: 400,
+                      height: 200,
+                    }}
+                  />
+                )}
               </div>
 
               <MagicButton
