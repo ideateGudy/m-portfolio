@@ -1,82 +1,111 @@
 "use client";
 
-import { FaLocationArrow } from "react-icons/fa6";
-
+import React from "react";
 import { projects } from "@/data";
-import { PinContainer } from "@/components/ui/3d-pin";
+import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 
 const RecentProjects = () => {
   return (
-    <div id="projects" className="py-20">
-      <h1 className="heading">
-        A small selection of{" "}
-        <span className="text-purple">recent projects</span>
-      </h1>
-      <div className="flex flex-wrap items-center justify-center p-4 gap-x-40 max-sm:gap-y-8 mt-10">
-        {projects.map(({ id, title, des, img, iconLists, link }) => (
-          <div
-            className="lg:min-h-130 h-100 flex items-center justify-center sm:w-96 sm:h-164 w-[80vw]"
-            key={id}
-          >
-            <PinContainer
-              title={link}
-              href={link}
+    <section id="projects" className="py-24 w-full relative">
+      {/* Section Header */}
+      <div className="flex flex-col items-center justify-center text-center">
+        <span className="uppercase tracking-widest text-xs font-semibold px-4 py-1.5 rounded-full border border-purple/30 bg-purple/10 text-purple mb-4">
+          Featured Work
+        </span>
+        <h2 className="heading max-w-2xl">
+          A small selection of <span className="text-purple">recent projects</span>
+        </h2>
+        <p className="text-white-200 mt-4 max-w-xl text-sm md:text-base font-light">
+          Real-world applications crafted with modern frontend architecture, interactive animations, and responsive design.
+        </p>
+      </div>
+
+      {/* Agency-style Card Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 mt-16 w-full max-w-6xl mx-auto">
+        {projects.map(({ id, title, des, img, iconLists, link }) => {
+          const displayLink = link.startsWith("http")
+            ? link
+            : `https://${link.replace(/^\/+/, "")}`;
+
+          return (
+            <div
+              key={id}
+              className="group relative flex flex-col justify-between rounded-3xl border border-white/10 bg-black-200/50 backdrop-blur-xl p-6 sm:p-7 transition-all duration-300 hover:border-purple/50 hover:shadow-[0_0_35px_rgba(203,172,249,0.18)] hover:-translate-y-1.5 overflow-hidden"
             >
-              <div className="relative flex items-center justify-center sm:w-100 sm:h-[40vh] w-[80vw] overflow-hidden h-[30vh] mb-10">
-                <div
-                  className="relative w-full h-full overflow-hidden lg:rounded-3xl"
-                  style={{ backgroundColor: "#13162D" }}
-                >
-                  <img src="/bg.png" alt="bgimg" />
+              {/* Top gradient highlight on hover */}
+              <div className="absolute inset-x-0 -top-px h-px bg-linear-to-r from-transparent via-purple/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+              <div>
+                {/* Visual Thumbnail Window */}
+                <div className="relative w-full h-56 sm:h-64 rounded-2xl overflow-hidden bg-[#13162D] border border-white/10 mb-6 flex items-center justify-center">
+                  <img
+                    src="/bg.png"
+                    alt="card backdrop"
+                    className="absolute inset-0 w-full h-full object-cover opacity-50"
+                  />
+                  <img
+                    src={img}
+                    alt={title}
+                    className="z-10 absolute bottom-0 max-h-[85%] w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute top-3 right-3 z-20">
+                    <span className="text-xs font-mono font-medium px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/15 text-purple">
+                      0{id}
+                    </span>
+                  </div>
                 </div>
-                <img
-                  src={img}
-                  alt="cover"
-                  className="z-10 absolute bottom-0"
-                />
+
+                {/* Project Title */}
+                <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-purple transition-colors duration-200 line-clamp-1">
+                  {title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-white-200 text-sm mt-3 line-clamp-2 leading-relaxed font-light">
+                  {des}
+                </p>
               </div>
 
-              <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1">
-                {title}
-              </h1>
-
-              <p
-                className="lg:text-xl lg:font-normal font-light text-sm line-clamp-2"
-                style={{
-                  color: "#BEC1DD",
-                  margin: "1vh 0",
-                }}
-              >
-                {des}
-              </p>
-
-              <div className="flex items-center justify-between mt-7 mb-3">
+              {/* Bottom Action & Tech Stack Bar */}
+              <div className="mt-8 pt-5 border-t border-white/10 flex items-center justify-between gap-4">
+                {/* Tech Icons Stack */}
                 <div className="flex items-center">
                   {iconLists.map((icon, index) => (
                     <div
                       key={index}
-                      className="border border-white/20 rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center"
+                      className="border border-white/20 rounded-full bg-black-100 w-9 h-9 flex justify-center items-center shrink-0 shadow-md"
                       style={{
-                        transform: `translateX(-${5 * index + 2}px)`,
+                        transform: `translateX(-${index * 8}px)`,
+                        zIndex: iconLists.length - index,
                       }}
+                      title="Tech tool"
                     >
-                      <img src={icon} alt="icon5" className="p-2" />
+                      <img
+                        src={icon}
+                        alt="tech icon"
+                        className="w-4 h-4 object-contain"
+                      />
                     </div>
                   ))}
                 </div>
 
-                <div className="flex justify-center items-center">
-                  <p className="flex lg:text-xl md:text-xs text-sm text-purple">
-                    Check Live Site
-                  </p>
-                  <FaLocationArrow className="ms-3" color="#CBACF9" />
-                </div>
+                {/* Live Link Button */}
+                <a
+                  href={displayLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Visit live site for ${title}`}
+                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-purple group-hover:text-white px-4 py-2 rounded-full bg-purple/10 hover:bg-purple/25 border border-purple/30 transition-all duration-200 active:scale-95 shrink-0"
+                >
+                  <span>Live Site</span>
+                  <FaArrowUpRightFromSquare className="h-3 w-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </a>
               </div>
-            </PinContainer>
-          </div>
-        ))}
+            </div>
+          );
+        })}
       </div>
-    </div>
+    </section>
   );
 };
 
