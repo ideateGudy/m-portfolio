@@ -7,17 +7,21 @@ import { InfiniteMovingCards } from "./ui/infinite-moving-cards";
 
 const Clients = () => {
   return (
-    <section id="testimonials" className="py-20">
-      <h1 className="heading">
-        Kind words from
-        <span className="text-purple"> satisfied clients</span>
-      </h1>
+    <section id="testimonials" className="py-24 w-full relative">
+      <div className="flex flex-col items-center justify-center text-center">
+        <span className="uppercase tracking-widest text-xs font-semibold px-4 py-1.5 rounded-full border border-purple/30 bg-purple/10 text-purple mb-4">
+          Client Feedback
+        </span>
+        <h2 className="heading max-w-2xl">
+          Real results from <span className="text-purple">real collaborations</span>
+        </h2>
+        <p className="text-white-200 mt-4 max-w-xl text-sm md:text-base font-light">
+          Feedback from startup founders, product managers, and engineering leaders who trusted me with their mission-critical architecture.
+        </p>
+      </div>
 
-      <div className="flex flex-col items-center max-lg:mt-10">
-        <div
-          // remove bg-white dark:bg-black dark:bg-grid-white/[0.05], h-[40rem] to 30rem , md:h-[30rem] are for the responsive design
-          className="h-[50vh] md:h-120 rounded-md flex flex-col antialiased items-center justify-center relative overflow-hidden"
-        >
+      <div className="flex flex-col items-center mt-12 w-full">
+        <div className="w-full flex flex-col antialiased items-center justify-center relative overflow-hidden py-4">
           <InfiniteMovingCards
             items={testimonials}
             direction="right"
