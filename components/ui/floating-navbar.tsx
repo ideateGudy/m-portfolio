@@ -7,18 +7,23 @@ import {
   useMotionValueEvent,
 } from "motion/react";
 import {
+  FaHouse,
   FaLocationArrow,
   FaUser,
   FaFolder,
   FaQuoteLeft,
   FaEnvelope,
+  FaBriefcase,
+  FaClockRotateLeft,
 } from "react-icons/fa6";
 import { cn } from "@/lib/utils";
 
 const icons = {
-  home: FaLocationArrow,
+  home: FaHouse,
   user: FaUser,
+  briefcase: FaBriefcase,
   folder: FaFolder,
+  timeline: FaClockRotateLeft,
   quote: FaQuoteLeft,
   envelope: FaEnvelope,
 };
@@ -40,10 +45,6 @@ export const FloatingNav = ({
   const { scrollYProgress } = useScroll();
   const [visible, setVisible] = useState(false);
 
-  navItems.map(item => {
-    if(typeof item.icon === "string") return item.icon as keyof typeof icons
-})
-
   useMotionValueEvent(scrollYProgress, "change", (current) => {
     if (typeof current === "number") {
       const direction = current - scrollYProgress.getPrevious()!;
@@ -62,7 +63,8 @@ export const FloatingNav = ({
 
   return (
     <AnimatePresence mode="wait">
-      <motion.div
+      <motion.nav
+        aria-label="Main Navigation"
         initial={{
           opacity: 1,
           y: -100,
@@ -75,34 +77,35 @@ export const FloatingNav = ({
           duration: 0.2,
         }}
         className={cn(
-          "flex max-w-fit fixed top-10 inset-x-0 mx-auto z-5000 items-center justify-center",
+          "flex max-w-fit fixed top-6 inset-x-0 mx-auto z-5000 items-center justify-center px-2",
           className
         )}
       >
-        <div className="flex items-center justify-center gap-2 rounded-full border border-white/20 px-10 py-5 shadow-lg shadow-black/10 backdrop-blur-md bg-black-100">
+        <div className="flex items-center justify-center gap-1 rounded-full border border-white/20 px-3 sm:px-6 py-2.5 shadow-xl shadow-black/40 backdrop-blur-md bg-black-100/90">
           {/* Nav items container */}
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-0.5 sm:gap-1">
             {navItems.map((navItem: NavItem, idx: number) => {
-            const IconComponent = navItem.icon && icons[navItem.icon as keyof typeof icons] ? icons[navItem.icon as keyof typeof icons] : FaLocationArrow;
-            return (
-              <a
-                key={`link-${idx}`}
-                href={navItem.link}
-                className={cn(
-                  "relative flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-300 dark:hover:bg-white/10 dark:hover:text-white"
-                )}
-              >
-                <IconComponent className="h-4 w-4 shrink-0 text-white block sm:hidden" />
-                <span className="hidden sm:block">{navItem.name}</span>
-              </a>
-            );})}
+              const IconComponent =
+                navItem.icon && icons[navItem.icon as keyof typeof icons]
+                  ? icons[navItem.icon as keyof typeof icons]
+                  : FaLocationArrow;
+              return (
+                <a
+                  key={`link-${idx}`}
+                  href={navItem.link}
+                  aria-label={navItem.name}
+                  className={cn(
+                    "relative flex items-center justify-center gap-1.5 rounded-full px-2.5 py-1.5 sm:px-3 sm:py-1.5 text-xs sm:text-sm font-medium text-neutral-300 transition-colors hover:bg-white/10 hover:text-white"
+                  )}
+                >
+                  <IconComponent className="h-4 w-4 shrink-0 text-purple block sm:hidden" />
+                  <span className="hidden sm:block">{navItem.name}</span>
+                </a>
+              );
+            })}
           </div>
-
-          {/* Divider */}
-          <div className="h-5 w-px bg-neutral-200 dark:bg-white/10" />
-
         </div>
-      </motion.div>
+      </motion.nav>
     </AnimatePresence>
   );
 };
