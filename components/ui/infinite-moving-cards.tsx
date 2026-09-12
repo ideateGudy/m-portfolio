@@ -2,6 +2,17 @@
 
 import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
+import { FaQuoteLeft, FaStar } from "react-icons/fa6";
+
+export type TestimonialItem = {
+  quote: string;
+  name: string;
+  title: string;
+  avatar?: string;
+  roleTag?: string;
+  rating?: number;
+  highlight?: string;
+};
 
 export const InfiniteMovingCards = ({
   items,
@@ -10,11 +21,7 @@ export const InfiniteMovingCards = ({
   pauseOnHover = true,
   className,
 }: {
-  items: {
-    quote: string;
-    name: string;
-    title: string;
-  }[];
+  items: TestimonialItem[];
   direction?: "left" | "right";
   speed?: "fast" | "normal" | "slow";
   pauseOnHover?: boolean;
@@ -28,7 +35,6 @@ export const InfiniteMovingCards = ({
   useEffect(() => {
     if (!containerRef.current || !scrollerRef.current) return;
 
-    // Prevent duplicating the cards more than once
     if (scrollerRef.current.dataset.duplicated === "true") return;
 
     const scrollerContent = Array.from(scrollerRef.current.children);
@@ -40,15 +46,8 @@ export const InfiniteMovingCards = ({
 
     scrollerRef.current.dataset.duplicated = "true";
 
-    // Direction
-    // containerRef.current.style.setProperty(
-    //   "--animation-direction",
-    //   direction === "left" ? "forwards" : "reverse",
-    // );
-
-    // Speed
     const duration =
-      speed === "fast" ? "30s" : speed === "normal" ? "60s" : "100s";
+      speed === "fast" ? "28s" : speed === "normal" ? "55s" : "90s";
 
     containerRef.current.style.setProperty("--animation-duration", duration);
 
@@ -59,14 +58,14 @@ export const InfiniteMovingCards = ({
     <div
       ref={containerRef}
       className={cn(
-        "scroller relative z-20 w-screen overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
+        "scroller relative z-20 w-screen overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_15%,white_85%,transparent)]",
         className,
       )}
     >
       <ul
         ref={scrollerRef}
         className={cn(
-          "flex w-max min-w-full shrink-0 flex-nowrap gap-16 py-4",
+          "flex w-max min-w-full shrink-0 flex-nowrap gap-6 md:gap-8 py-6",
           start &&
             (direction === "left"
               ? "animate-scroll-left"
@@ -76,35 +75,65 @@ export const InfiniteMovingCards = ({
       >
         {items.map((item, idx) => (
           <li
-            className="relative w-[90vw] max-w-full shrink-0 rounded-2xl border border-b-0 border-slate-800 bg-[#04071d] bg-[linear-gradient(90deg,rgba(4,7,29,1)_0%,rgba(12,14,35,1)_100%)] p-5 md:w-[60vw] md:p-16"
+            className="relative w-[85vw] sm:w-[480px] md:w-[560px] shrink-0 rounded-3xl border border-white/15 bg-black-200/70 backdrop-blur-xl p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 hover:border-purple/50 hover:shadow-[0_0_30px_rgba(203,172,249,0.12)] overflow-hidden group"
             key={idx}
           >
-            <blockquote>
-              <div
-                aria-hidden="true"
-                className="user-select-none pointer-events-none absolute -top-0.5 -left-0.5 -z-1 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
-              />
+            {/* Top accent glow on hover */}
+            <div className="absolute inset-x-0 -top-px h-px bg-linear-to-r from-transparent via-purple/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-              <span className="relative z-20 text-lg leading-[1.6] font-normal text-white dark:text-gray-100">
-                {item.quote}
-              </span>
-
-              <div className="relative z-20 mt-6 flex flex-row items-center">
-                <div className="me-3">
-                  <img src="/profile.svg" alt="profile" />
+            <div>
+              {/* Header: Rating & Highlight Pill */}
+              <div className="flex items-center justify-between gap-3 mb-5">
+                <div className="flex items-center gap-1 text-amber-400">
+                  {Array.from({ length: item.rating ?? 5 }).map((_, i) => (
+                    <FaStar key={i} className="w-3.5 h-3.5 fill-amber-400" />
+                  ))}
                 </div>
 
-                <span className="flex flex-col gap-1">
-                  <span className="text-sm leading-[1.6] font-bold text-white">
+                {item.highlight && (
+                  <span className="text-[11px] font-medium font-mono px-3 py-1 rounded-full bg-purple/15 text-purple border border-purple/25">
+                    {item.highlight}
+                  </span>
+                )}
+              </div>
+
+              {/* Quote icon & text */}
+              <div className="relative">
+                <FaQuoteLeft className="text-purple/20 text-3xl absolute -top-3 -left-1 pointer-events-none select-none" />
+                <p className="relative z-10 text-sm sm:text-base leading-relaxed text-white-100 font-light pt-2">
+                  &ldquo;{item.quote}&rdquo;
+                </p>
+              </div>
+            </div>
+
+            {/* Author Footer with Real Avatar */}
+            <div className="relative z-10 mt-8 pt-5 border-t border-white/10 flex items-center justify-between">
+              <div className="flex items-center gap-3.5">
+                <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-purple/40 shrink-0 bg-slate-900 shadow-md">
+                  <img
+                    src={item.avatar || "/profile.svg"}
+                    alt={item.name}
+                    className="w-full h-full object-cover object-center"
+                    loading="lazy"
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  <span className="text-sm sm:text-base font-semibold text-white tracking-wide">
                     {item.name}
                   </span>
-
-                  <span className="text-sm leading-[1.6] font-normal text-white-200">
+                  <span className="text-xs text-white-200 font-light">
                     {item.title}
                   </span>
-                </span>
+                </div>
               </div>
-            </blockquote>
+
+              {item.roleTag && (
+                <span className="hidden sm:inline-block text-[11px] text-white-200/70 border border-white/10 px-2.5 py-1 rounded-md bg-white/5">
+                  {item.roleTag}
+                </span>
+              )}
+            </div>
           </li>
         ))}
       </ul>
