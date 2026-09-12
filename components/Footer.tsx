@@ -1,51 +1,59 @@
-import { FaLocationArrow } from "react-icons/fa6";
-
-import { socialMedia } from "@/data";
-import MagicButton from "./ui/magic-button";
+import ContactForm from "./ContactForm";
+import { navItems, socialMedia } from "@/data";
 
 const Footer = () => {
   return (
-    <footer className="w-full pt-20 pb-10" id="contact">
-      {/* background grid */}
-      <div className="w-full absolute left-0 -bottom-72 min-h-96">
-        <img
-          src="/footer-grid.svg"
-          alt="grid"
-          className="w-full h-full opacity-50 "
-        />
-      </div>
-
-      <div className="flex flex-col items-center">
-        <h1 className="heading lg:max-w-[45vw]">
-          Ready to take <span className="text-purple">your</span> digital
-          presence to the next level?
-        </h1>
-        <p className="text-white-200 md:mt-10 my-5 text-center">
-          Reach out to me today and let&apos;s discuss how I can help you
-          achieve your goals.
-        </p>
-        <a href="mailto:azonubigoodnews@gmail.com">
-          <MagicButton
-            title="Let's get in touch"
-            icon={<FaLocationArrow />}
-            position="right"
-          />
-        </a>
-      </div>
-      <div className="flex mt-16 md:flex-row flex-col justify-between items-center md:mb-12 gap-4">
-        <p className="md:text-base text-sm md:font-normal font-light">
-          Copyright © 2026 <span className="text-purple">Goodnews Azonubi</span>
+    <footer className="w-full pt-20 pb-12 md:pb-20 relative overflow-hidden" id="contact">
+      <div className="flex flex-col items-center text-center">
+        <span className="uppercase tracking-widest text-xs font-semibold px-4 py-1.5 rounded-full border border-purple/30 bg-purple/10 text-purple mb-4">
+          Contact & Inquiries
+        </span>
+        <h2 className="heading lg:max-w-[45vw]">
+          Ready to take <span className="text-purple">your</span> digital presence to the next level?
+        </h2>
+        <p className="text-white-200 md:mt-4 my-3 text-center text-sm md:text-base max-w-lg">
+          Reach out today to discuss custom web development, landing pages, or fullstack solutions.
         </p>
 
-        <div className="flex items-center md:gap-3 gap-6">
-          {socialMedia.map((info) => (
-            <a href={info.link} target="_blank" rel="noopener noreferrer" key={info.id}>
-            <div
-              key={info.id}
-              className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-black-300"
+        {/* Working Contact Form */}
+        <ContactForm />
+      </div>
+
+      {/* Quick navigation and copyright bar */}
+      <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="flex flex-col sm:flex-row items-center gap-4">
+          <p className="md:text-sm text-xs font-light text-white-200">
+            Copyright © {new Date().getFullYear()} <span className="text-purple font-medium">Goodnews Azonubi</span>
+          </p>
+          <span className="hidden sm:inline-block text-white/20">•</span>
+          <p className="text-xs text-white-200/60 font-light">Backend &amp; DevOps Engineer • Fullstack Developer</p>
+        </div>
+
+        {/* Quick nav links */}
+        <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-white-200">
+          {navItems.map((item) => (
+            <a
+              key={item.name}
+              href={item.link}
+              className="hover:text-purple transition-colors"
             >
-              <img src={info.img} alt="icons" width={20} height={20} />
-            </div>
+              {item.name}
+            </a>
+          ))}
+        </div>
+
+        {/* Social media links */}
+        <div className="flex items-center gap-3">
+          {socialMedia.map((info) => (
+            <a
+              href={info.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              key={info.id}
+              aria-label={`Link to social profile`}
+              className="w-10 h-10 flex justify-center items-center backdrop-blur-lg bg-black-200/80 rounded-xl border border-white/10 hover:border-purple/50 hover:bg-purple/10 transition-all duration-200 active:scale-95"
+            >
+              <img src={info.img} alt="social icon" width={18} height={18} />
             </a>
           ))}
         </div>
