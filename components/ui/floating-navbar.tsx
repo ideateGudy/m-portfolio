@@ -6,21 +6,43 @@ import {
   useScroll,
   useMotionValueEvent,
 } from "motion/react";
+import {
+  FaLocationArrow,
+  FaUser,
+  FaFolder,
+  FaQuoteLeft,
+  FaEnvelope,
+} from "react-icons/fa6";
 import { cn } from "@/lib/utils";
+
+const icons = {
+  home: FaLocationArrow,
+  user: FaUser,
+  folder: FaFolder,
+  quote: FaQuoteLeft,
+  envelope: FaEnvelope,
+};
+
+type NavItem = {
+  name: string;
+  link: string;
+  icon: string;
+};
+
 
 export const FloatingNav = ({
   navItems,
   className,
 }: {
-  navItems: {
-    name: string;
-    link: string;
-    icon?: JSX.Element;
-  }[];
+  navItems: NavItem[];
   className?: string;
 }) => {
   const { scrollYProgress } = useScroll();
   const [visible, setVisible] = useState(false);
+
+  navItems.map(item => {
+    if(typeof item.icon === "string") return item.icon as keyof typeof icons
+})
 
   useMotionValueEvent(scrollYProgress, "change", (current) => {
     if (typeof current === "number") {
@@ -60,7 +82,10 @@ export const FloatingNav = ({
         <div className="flex items-center justify-center gap-2 rounded-full border border-white/20 px-10 py-5 shadow-lg shadow-black/10 backdrop-blur-md bg-black-100">
           {/* Nav items container */}
           <div className="flex items-center gap-1">
-            {navItems.map((navItem, idx: number) => (
+            {navItems.map((navItem: NavItem, idx: number) => {
+              if(typeof navItem.icon === "string") return navItem.icon as keyof typeof icons
+               const Icon = icons[navItem.icon];
+            return(
               <a
                 key={`link-${idx}`}
                 href={navItem.link}
@@ -68,10 +93,11 @@ export const FloatingNav = ({
                   "relative flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-300 dark:hover:bg-white/10 dark:hover:text-white"
                 )}
               >
-                <span className="block sm:hidden">{navItem.icon}</span>
+                {/* <span className="block sm:hidden">{navItem.icon}</span> */}
+                <Icon className="h-4 w-4 shrink-0 text-white block sm:hidden" />
                 <span className="hidden sm:block">{navItem.name}</span>
               </a>
-            ))}
+            )})}
           </div>
 
           {/* Divider */}
