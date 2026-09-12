@@ -1,35 +1,64 @@
+"use client";
+
 import { gridItems } from "@/data";
 import { BentoGrid, BentoGridItem } from "./ui/bento-grid";
+import { SectionReveal, StaggerItem } from "./ui/section-reveal";
 
 const Grid = () => {
   return (
     <section id="about">
-      <BentoGrid className="w-full py-20">
-        {gridItems.map(
-          ({
-            id,
-            title,
-            description,
-            className,
-            img,
-            imgClassName,
-            titleClassName,
-            spareImg,
-          }) => (
-            <BentoGridItem
-              id={id}
-              key={id}
-              title={title}
-              description={description}
-              className={className}
-              img={img}
-              imgClassName={imgClassName}
-              titleClassName={titleClassName}
-              spareImg={spareImg}
-            />
-          ),
-        )}
-      </BentoGrid>
+      <SectionReveal stagger staggerDelay={0.12}>
+        <BentoGrid className="w-full py-20">
+          {gridItems.map(
+            (
+              {
+                id,
+                title,
+                description,
+                className,
+                img,
+                imgClassName,
+                titleClassName,
+                spareImg,
+              },
+              index,
+            ) => {
+              // Bento layout directional entry:
+              // id 1 (left column): 'left'
+              // id 2, 3 (right column upper): 'right'
+              // id 4 (bottom left/middle): 'left'
+              // id 5 (bottom right banner): 'right'
+              // id 6 (copy email / bottom): 'up'
+              const direction =
+                id === 1 || id === 4
+                  ? "left"
+                  : id === 2 || id === 3 || id === 5
+                  ? "right"
+                  : "up";
+
+              return (
+                <StaggerItem
+                  key={id}
+                  direction={direction}
+                  offset={22}
+                  className={className}
+                >
+                  <BentoGridItem
+                    id={id}
+                    title={title}
+                    description={description}
+                    className="h-full w-full"
+                    img={img}
+                    imgClassName={imgClassName}
+                    titleClassName={titleClassName}
+                    spareImg={spareImg}
+                  />
+                </StaggerItem>
+              );
+            },
+          )}
+        </BentoGrid>
+      </SectionReveal>
     </section>
   );
 };

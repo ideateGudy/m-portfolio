@@ -1,4 +1,7 @@
+"use client";
+
 import { cn } from "@/lib/utils";
+import { motion } from "motion/react";
 import { Spotlight } from "./ui/spotlight";
 import MagicButton from "./ui/magic-button";
 import { TextGenerateEffect } from "./ui/text-generate-effect";
@@ -35,7 +38,12 @@ const Hero = () => {
       </div>
       <div className="flex justify-center relative my-8 md:my-12 z-10">
         <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center">
-          <div className="inline-flex items-center justify-center gap-2 sm:gap-2.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-purple/30 bg-purple/10 backdrop-blur-md shadow-[0_0_20px_rgba(203,172,249,0.15)] hover:border-purple/50 transition-all duration-300 max-w-[92vw] text-center">
+          <motion.div
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="inline-flex items-center justify-center gap-2 sm:gap-2.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-purple/30 bg-purple/10 backdrop-blur-md shadow-[0_0_20px_rgba(203,172,249,0.15)] hover:border-purple/50 transition-all duration-300 max-w-[92vw] text-center"
+          >
             <span className="flex items-center justify-center w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-purple/20 text-purple text-[9px] sm:text-[10px] shrink-0">
               <FaTerminal />
             </span>
@@ -46,7 +54,7 @@ const Hero = () => {
             <span className="text-[10px] sm:text-xs font-semibold tracking-wider text-purple uppercase font-mono text-center">
               Architecting Robust Backends &amp; Cloud Infrastructure
             </span>
-          </div>
+          </motion.div>
 
           <TextGenerateEffect
             duration={3}
@@ -55,11 +63,21 @@ const Hero = () => {
             className="text-center text-[40px] md:text-5xl lg:text-6xl"
           />
 
-          <p className="text-center md:tracking-wider my-4 text-sm md:text-lg lg:text-2xl">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+            className="text-center md:tracking-wider my-4 text-sm md:text-lg lg:text-2xl"
+          >
             Hi👋! I&apos;m Goodnews, a Fullstack Engineer.
-          </p>
+          </motion.p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6"
+          >
             <a href="#projects" className="w-full sm:w-auto">
               <MagicButton
                 title="Show my work"
@@ -81,10 +99,15 @@ const Hero = () => {
                 View Resume
               </span>
             </a>
-          </div>
+          </motion.div>
 
           {/* Top Social Links */}
-          <div className="flex items-center justify-center gap-3 mt-8">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
+            className="flex items-center justify-center gap-3 mt-8"
+          >
             <span className="text-xs text-white-200/50 font-mono mr-1">Connect:</span>
             {socialMedia.map((info) => (
               <a
@@ -98,7 +121,7 @@ const Hero = () => {
                 <img src={info.img} alt="social icon" width={16} height={16} className="opacity-80 hover:opacity-100" />
               </a>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
 

@@ -6,6 +6,7 @@ import { FaArrowRight, FaCheck } from "react-icons/fa6";
 import MagicButton from "./ui/magic-button";
 import { FaLocationArrow } from "react-icons/fa";
 import { ContactModal } from "./ui/contact-modal";
+import { SectionReveal, StaggerItem } from "./ui/section-reveal";
 
 const Services = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -22,24 +23,29 @@ const Services = () => {
 
   return (
     <section id="services" className="py-24 w-full relative">
-      <div className="flex flex-col items-center justify-center text-center">
-        <span className="uppercase tracking-widest text-xs font-semibold px-4 py-1.5 rounded-full border border-purple/30 bg-purple/10 text-purple mb-4">
-          Services & Capabilities
-        </span>
-        <h2 className="heading max-w-2xl">
-          How I can <span className="text-purple">help you</span> succeed
-        </h2>
-        <p className="text-white-200 mt-4 max-w-xl text-sm md:text-base">
-          Tailored backend, DevOps, and fullstack engineering solutions designed to elevate your product, ensure high performance, and drive tangible business results.
-        </p>
-      </div>
+      <SectionReveal stagger staggerDelay={0.15}>
+        <StaggerItem className="flex flex-col items-center justify-center text-center">
+          <span className="uppercase tracking-widest text-xs font-semibold px-4 py-1.5 rounded-full border border-purple/30 bg-purple/10 text-purple mb-4">
+            Services & Capabilities
+          </span>
+          <h2 className="heading max-w-2xl">
+            How I can <span className="text-purple">help you</span> succeed
+          </h2>
+          <p className="text-white-200 mt-4 max-w-xl text-sm md:text-base">
+            Tailored backend, DevOps, and fullstack engineering solutions designed to elevate your product, ensure high performance, and drive tangible business results.
+          </p>
+        </StaggerItem>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16 w-full">
-        {services.map((service) => (
-          <div
-            key={service.id}
-            className="relative group rounded-3xl border border-white/10 bg-black-200/60 backdrop-blur-xl p-8 flex flex-col justify-between transition-all duration-300 hover:border-purple/50 hover:shadow-[0_0_30px_rgba(203,172,249,0.15)] overflow-hidden"
-          >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16 w-full">
+          {services.map((service, index) => {
+            const direction = index === 0 ? "left" : index === 1 ? "up" : "right";
+            return (
+              <StaggerItem
+                key={service.id}
+                direction={direction}
+                offset={22}
+                className="relative group rounded-3xl border border-white/10 bg-black-200/60 backdrop-blur-xl p-8 flex flex-col justify-between transition-all duration-300 hover:border-purple/50 hover:shadow-[0_0_30px_rgba(203,172,249,0.15)] overflow-hidden h-full"
+              >
             {/* Top gradient highlight on hover */}
             <div className="absolute inset-x-0 -top-px h-px bg-linear-to-r from-transparent via-purple/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
@@ -92,11 +98,12 @@ const Services = () => {
               </button>
               <span className="text-xs text-white-200/40">Available for projects</span>
             </div>
-          </div>
-        ))}
+          </StaggerItem>
+        );
+      })}
       </div>
 
-      <div className="mt-16 flex flex-col md:flex-row items-center justify-center gap-5 p-6 rounded-2xl border border-white/10 bg-black-200/40 backdrop-blur-md max-w-2xl mx-auto text-center md:text-left">
+      <StaggerItem className="mt-16 flex flex-col md:flex-row items-center justify-center gap-5 p-6 rounded-2xl border border-white/10 bg-black-200/40 backdrop-blur-md max-w-2xl mx-auto text-center md:text-left">
         <p className="text-sm md:text-base text-white-100 font-medium max-w-sm">
           Have a custom project or unique technical requirements?
         </p>
@@ -109,7 +116,8 @@ const Services = () => {
             containerClassName="w-full md:w-56"
           />
         </div>
-      </div>
+      </StaggerItem>
+      </SectionReveal>
 
       {/* Interactive Contact Modal */}
       <ContactModal

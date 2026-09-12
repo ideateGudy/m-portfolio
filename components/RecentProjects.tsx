@@ -3,35 +3,39 @@
 import React from "react";
 import { projects } from "@/data";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
+import { SectionReveal, StaggerItem } from "./ui/section-reveal";
 
 const RecentProjects = () => {
   return (
     <section id="projects" className="py-24 w-full relative">
-      {/* Section Header */}
-      <div className="flex flex-col items-center justify-center text-center">
-        <span className="uppercase tracking-widest text-xs font-semibold px-4 py-1.5 rounded-full border border-purple/30 bg-purple/10 text-purple mb-4">
-          Featured Work
-        </span>
-        <h2 className="heading max-w-2xl">
-          A small selection of <span className="text-purple">recent projects</span>
-        </h2>
-        <p className="text-white-200 mt-4 max-w-xl text-sm md:text-base font-light">
-          Real-world applications crafted with modern frontend architecture, interactive animations, and responsive design.
-        </p>
-      </div>
+      <SectionReveal stagger staggerDelay={0.15}>
+        {/* Section Header */}
+        <StaggerItem className="flex flex-col items-center justify-center text-center">
+          <span className="uppercase tracking-widest text-xs font-semibold px-4 py-1.5 rounded-full border border-purple/30 bg-purple/10 text-purple mb-4">
+            Featured Work
+          </span>
+          <h2 className="heading max-w-2xl">
+            A small selection of <span className="text-purple">recent projects</span>
+          </h2>
+          <p className="text-white-200 mt-4 max-w-xl text-sm md:text-base font-light">
+            Real-world applications crafted with modern frontend architecture, interactive animations, and responsive design.
+          </p>
+        </StaggerItem>
 
-      {/* Agency-style Card Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 mt-16 w-full max-w-6xl mx-auto">
-        {projects.map(({ id, title, des, img, iconLists, link }) => {
-          const displayLink = link.startsWith("http")
-            ? link
-            : `https://${link.replace(/^\/+/, "")}`;
+        {/* Agency-style Card Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 mt-16 w-full max-w-6xl mx-auto">
+          {projects.map(({ id, title, des, img, iconLists, link }, index) => {
+            const displayLink = link.startsWith("http")
+              ? link
+              : `https://${link.replace(/^\/+/, "")}`;
 
-          return (
-            <div
-              key={id}
-              className="group relative flex flex-col justify-between rounded-3xl border border-white/10 bg-black-200/50 backdrop-blur-xl p-6 sm:p-7 transition-all duration-300 hover:border-purple/50 hover:shadow-[0_0_35px_rgba(203,172,249,0.18)] hover:-translate-y-1.5 overflow-hidden"
-            >
+            return (
+              <StaggerItem
+                key={id}
+                direction={index % 2 === 0 ? "left" : "right"}
+                offset={24}
+                className="group relative flex flex-col justify-between rounded-3xl border border-white/10 bg-black-200/50 backdrop-blur-xl p-6 sm:p-7 transition-all duration-300 hover:border-purple/50 hover:shadow-[0_0_35px_rgba(203,172,249,0.18)] hover:-translate-y-1.5 overflow-hidden"
+              >
               {/* Top gradient highlight on hover */}
               <div className="absolute inset-x-0 -top-px h-px bg-linear-to-r from-transparent via-purple/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
@@ -101,10 +105,11 @@ const RecentProjects = () => {
                   <FaArrowUpRightFromSquare className="h-3 w-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </a>
               </div>
-            </div>
+            </StaggerItem>
           );
         })}
-      </div>
+        </div>
+      </SectionReveal>
     </section>
   );
 };

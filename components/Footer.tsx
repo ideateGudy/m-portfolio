@@ -1,10 +1,14 @@
+"use client";
+
 import ContactForm from "./ContactForm";
 import { navItems, socialMedia } from "@/data";
+import { SectionReveal } from "./ui/section-reveal";
 
 const Footer = () => {
   return (
     <footer className="w-full pt-20 pb-12 md:pb-20 relative overflow-hidden" id="contact">
-      <div className="flex flex-col items-center text-center">
+      <SectionReveal>
+        <div className="flex flex-col items-center text-center">
         <span className="uppercase tracking-widest text-xs font-semibold px-4 py-1.5 rounded-full border border-purple/30 bg-purple/10 text-purple mb-4">
           Contact & Inquiries
         </span>
@@ -58,6 +62,7 @@ const Footer = () => {
           ))}
         </div>
       </div>
+      </SectionReveal>
     </footer>
   );
 };
