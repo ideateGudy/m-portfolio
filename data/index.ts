@@ -1,9 +1,58 @@
+export const resumeUrl = "https://drive.google.com/file/d/YOUR_GOOGLE_DRIVE_FILE_ID/view?usp=sharing";
+
 export const navItems = [
   { name: "Home", link: "#home", icon: "home" },
   { name: "About", link: "#about", icon: "user" },
+  { name: "Services", link: "#services", icon: "briefcase" },
   { name: "Projects", link: "#projects", icon: "folder" },
+  { name: "Experience", link: "#experience", icon: "timeline" },
   { name: "Testimonials", link: "#testimonials", icon: "quote" },
   { name: "Contact", link: "#contact", icon: "envelope" },
+];
+
+export const services = [
+  {
+    id: 1,
+    title: "Backend Architecture & Robust APIs",
+    tagline: "High-Performance, Secure & Scalable",
+    description:
+      "Architect and implement production-grade server-side systems, high-throughput RESTful APIs, and database models with robust authentication (JWT/OAuth/OTP), rate limiting, and RBAC.",
+    deliverables: [
+      "RESTful APIs with Node.js, C#, Express/NestJS",
+      "Authentication, authorization, OTP & token security",
+      "Database schema design, indexing & Redis caching",
+      "Structured logging, Swagger/OpenAPI documentation & testing",
+    ],
+    badge: "Core Specialty",
+  },
+  {
+    id: 2,
+    title: "DevOps & Cloud Infrastructure",
+    tagline: "CI/CD, Automation & Cloud Deployment",
+    description:
+      "Streamline deployment lifecycles and infrastructure reliability through containerization, automated CI/CD workflows, cloud environments (AWS, Docker, Terraform), and proactive monitoring.",
+    deliverables: [
+      "Docker containerization & multi-environment setups",
+      "AWS cloud provisioning & serverless deployments",
+      "CI/CD pipeline automation (GitHub Actions / GitLab)",
+      "Infrastructure as Code (Terraform) & performance monitoring",
+    ],
+    badge: "DevOps",
+  },
+  {
+    id: 3,
+    title: "Fullstack Web Applications",
+    tagline: "End-to-End Modern Architecture",
+    description:
+      "Deliver full-cycle web applications connecting rock-solid backend services and APIs with modern, responsive Next.js/React frontends, payments, and real-time syncing.",
+    deliverables: [
+      "Type-safe Next.js / TypeScript end-to-end applications",
+      "Real-time data flow with WebSockets & message queues",
+      "Payment gateway integrations & webhook handlers",
+      "High Core Web Vitals & responsive UI delivery",
+    ],
+    badge: "Fullstack",
+  },
 ];
 
 
@@ -109,33 +158,53 @@ export const projects = [
 export const testimonials = [
   {
     quote:
-      "Working with Goodnews was a great experience. He understood the requirements quickly, communicated clearly, and delivered a reliable solution. His attention to detail and problem-solving skills really stood out throughout the project.",
-    name: "Chinedu Okafor",
-    title: "Product Manager at TechNova Africa",
+      "Goodnews restructured our entire payment settlement pipeline and Redis caching layer. Under peak load during our holiday campaign, our API latency dropped from 840ms down to 110ms with zero failed transactions. He's easily one of the most dependable backend engineers I've partnered with.",
+    name: "Tunde Balogun",
+    title: "Head of Engineering at PayPulse Africa",
+    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+    roleTag: "Fintech Platform",
+    rating: 5,
+    highlight: "840ms → 110ms API Latency",
   },
   {
     quote:
-      "I was impressed by Goodnews's ability to turn ideas into functional, well-structured applications. He was proactive, easy to work with, and consistently focused on delivering quality results.",
-    name: "Sarah Williams",
-    title: "Founder of BrightLabs",
+      "We brought Goodnews in to rescue a messy monolithic deployment. Within 3 weeks, he containerized the entire stack with Docker, automated our CI/CD pipelines via GitHub Actions, and migrated our staging environment to AWS ECS. Deployments went from stressful 2-hour manual rituals to automated 4-minute rollouts.",
+    name: "Marcus Vance",
+    title: "VP of Product at ScaleGrid Systems",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+    roleTag: "Cloud & DevOps",
+    rating: 5,
+    highlight: "4-Minute Automated CI/CD",
   },
   {
     quote:
-      "Goodnews brought strong technical skills and a great attitude to our project. From backend development to API integration, he handled challenges professionally and made sure everything worked as expected.",
-    name: "Emeka Nwosu",
-    title: "Software Engineer at CloudBridge",
+      "Goodnews delivered our fullstack enterprise dashboard using Next.js and Node.js. He didn't just write code—he challenged our architectural assumptions, built rigorous role-based access control, and ensured our database queries were properly indexed. The finished product feels snappy and bulletproof.",
+    name: "Claire Moreau",
+    title: "Co-Founder & CTO at OmniTrack Health",
+    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80",
+    roleTag: "SaaS Application",
+    rating: 5,
+    highlight: "99.9% Uptime & RBAC Security",
   },
   {
     quote:
-      "It was a pleasure collaborating with Goodnews. He is a fast learner, communicates effectively, and takes ownership of his work. I would definitely recommend him to anyone looking for a dedicated software developer.",
-    name: "James Anderson",
-    title: "Engineering Manager at DevCore",
+      "What stands out about Goodnews is his deep ownership. When our database hit concurrent connection limits on a Friday night, he proactively analyzed connection pool bottlenecks, introduced pooling with PgBouncer, and had us running smoothly before users even noticed. Absolute rockstar.",
+    name: "Ibrahim Sani",
+    title: "Lead Systems Architect at KrediNet",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80",
+    roleTag: "Database & Infrastructure",
+    rating: 5,
+    highlight: "Zero Downtime Incident Response",
   },
   {
     quote:
-      "Goodnews consistently demonstrated creativity, technical ability, and attention to detail. He contributed valuable ideas to the project and delivered solutions that exceeded our expectations.",
-    name: "Amaka Eze",
-    title: "Project Lead at InnovateHub",
+      "Working with Goodnews gave our startup the technical backbone we needed to confidently pitch investors. He built our core REST APIs, webhook handlers, and Stripe integration with bulletproof idempotency. Fast communication, clean Git hygiene, and stellar code craftsmanship.",
+    name: "Elena Rostova",
+    title: "Managing Director at HyperLoop Ventures",
+    avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80",
+    roleTag: "Fullstack Architecture",
+    rating: 5,
+    highlight: "Production-Grade Payment Flow",
   },
 ];
 
