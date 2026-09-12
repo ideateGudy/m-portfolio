@@ -83,9 +83,8 @@ export const FloatingNav = ({
           {/* Nav items container */}
           <div className="flex items-center gap-1">
             {navItems.map((navItem: NavItem, idx: number) => {
-              if(typeof navItem.icon === "string") return navItem.icon as keyof typeof icons
-               const Icon = icons[navItem.icon];
-            return(
+            const IconComponent = navItem.icon && icons[navItem.icon as keyof typeof icons] ? icons[navItem.icon as keyof typeof icons] : FaLocationArrow;
+            return (
               <a
                 key={`link-${idx}`}
                 href={navItem.link}
@@ -93,11 +92,10 @@ export const FloatingNav = ({
                   "relative flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-300 dark:hover:bg-white/10 dark:hover:text-white"
                 )}
               >
-                {/* <span className="block sm:hidden">{navItem.icon}</span> */}
-                <Icon className="h-4 w-4 shrink-0 text-white block sm:hidden" />
+                <IconComponent className="h-4 w-4 shrink-0 text-white block sm:hidden" />
                 <span className="hidden sm:block">{navItem.name}</span>
               </a>
-            )})}
+            );})}
           </div>
 
           {/* Divider */}
