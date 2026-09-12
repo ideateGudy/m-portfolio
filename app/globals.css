@@ -337,6 +337,7 @@
   html {
     scrollbar-width: thin;
     scrollbar-color: rgba(203, 172, 249, 0.4) rgba(0, 3, 25, 0.95);
+    overscroll-behavior-y: none;
     @apply font-sans;
   }
 
@@ -366,6 +367,7 @@
   }
 
   body {
+    overscroll-behavior-y: none;
     @apply bg-background text-foreground;
   }
 
