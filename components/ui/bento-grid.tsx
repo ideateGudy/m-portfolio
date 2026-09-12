@@ -7,6 +7,7 @@ import GridGlobe from "./grid-globe";
 import { IoCopyOutline } from "react-icons/io5";
 import { useState } from "react";
 import animationData from "@/data/confetti.json";
+import { contactEmail } from "@/data";
 
 export const BentoGrid = ({
   className,
@@ -53,8 +54,7 @@ export const BentoGridItem = ({
   const [confettiKey, setConfettiKey] = useState<number>(0);
 
   const handleCopy = () => {
-    const text = "azonubigoodnews@gmail.com";
-    navigator.clipboard.writeText(text);
+    navigator.clipboard.writeText(contactEmail);
 
     // Reset/remount the confetti animation every time
     setConfettiKey((prev) => prev + 1);

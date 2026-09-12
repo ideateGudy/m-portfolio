@@ -1,12 +1,25 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { services } from "@/data";
 import { FaArrowRight, FaCheck } from "react-icons/fa6";
 import MagicButton from "./ui/magic-button";
 import { FaLocationArrow } from "react-icons/fa";
+import { ContactModal } from "./ui/contact-modal";
 
 const Services = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState<string | undefined>(undefined);
+
+  const handleOpenModal = (serviceTitle?: string) => {
+    setSelectedService(serviceTitle);
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  };
+
   return (
     <section id="services" className="py-24 w-full relative">
       <div className="flex flex-col items-center justify-center text-center">
@@ -17,7 +30,7 @@ const Services = () => {
           How I can <span className="text-purple">help you</span> succeed
         </h2>
         <p className="text-white-200 mt-4 max-w-xl text-sm md:text-base">
-          Tailored frontend & fullstack engineering solutions designed to elevate your brand, delight users, and drive tangible business results.
+          Tailored backend, DevOps, and fullstack engineering solutions designed to elevate your product, ensure high performance, and drive tangible business results.
         </p>
       </div>
 
@@ -69,13 +82,14 @@ const Services = () => {
             </div>
 
             <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-between">
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 text-sm font-medium text-purple hover:text-white transition-colors duration-200 group/link"
+              <button
+                type="button"
+                onClick={() => handleOpenModal(service.title)}
+                className="inline-flex items-center gap-2 text-sm font-medium text-purple hover:text-white transition-colors duration-200 group/link cursor-pointer"
               >
                 <span>Get in touch</span>
                 <FaArrowRight className="h-3.5 w-3.5 transition-transform group-hover/link:translate-x-1" />
-              </a>
+              </button>
               <span className="text-xs text-white-200/40">Available for projects</span>
             </div>
           </div>
@@ -86,15 +100,23 @@ const Services = () => {
         <p className="text-sm md:text-base text-white-100 font-medium max-w-sm">
           Have a custom project or unique technical requirements?
         </p>
-        <a href="#contact" className="w-full md:w-auto shrink-0">
+        <div className="w-full md:w-auto shrink-0">
           <MagicButton
             title="Let's build together"
             icon={<FaLocationArrow />}
             position="right"
+            handleClick={() => handleOpenModal("Custom Project / Consultation")}
             containerClassName="w-full md:w-56"
           />
-        </a>
+        </div>
       </div>
+
+      {/* Interactive Contact Modal */}
+      <ContactModal
+        isOpen={modalOpen}
+        onClose={handleCloseModal}
+        serviceTitle={selectedService}
+      />
     </section>
   );
 };

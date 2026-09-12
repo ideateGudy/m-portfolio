@@ -1,4 +1,5 @@
-export const resumeUrl = "https://drive.google.com/file/d/YOUR_GOOGLE_DRIVE_FILE_ID/view?usp=sharing";
+export const contactEmail = "azonubigoodnews@gmail.com";
+export const resumeUrl = "https://drive.google.com/file/d/131xzO3sfyHhDgA88GFlPxYf75mRwg8Wg/view?usp=drive_link";
 
 export const navItems = [
   { name: "Home", link: "#home", icon: "home" },
@@ -59,7 +60,7 @@ export const services = [
 export const gridItems = [
   {
     id: 1,
-    title: "I prioritize client collaboration, fostering open communication ",
+    title: "Collaborative engineering with open, direct communication",
     description: "",
     className: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
     imgClassName: "w-full h-full",
@@ -89,7 +90,7 @@ export const gridItems = [
   },
   {
     id: 4,
-    title: "Tech enthusiast with a passion for development.",
+    title: "Fullstack developer passionate about building reliable software",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-1",
     imgClassName: "",
@@ -100,8 +101,8 @@ export const gridItems = [
 
   {
     id: 5,
-    title: "Currently building Prizia",
-    description: "The Inside Scoop",
+    title: "Building modern fullstack & cloud solutions",
+    description: "Current Focus",
     className: "md:col-span-3 md:row-span-2",
     imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
     titleClassName: "justify-center md:justify-start lg:justify-center",

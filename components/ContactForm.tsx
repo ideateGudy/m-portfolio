@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { FaPaperPlane, FaCheckCircle, FaExclamationCircle } from "react-icons/fa";
 import { IoCopyOutline, IoMailOutline } from "react-icons/io5";
+import { contactEmail } from "@/data";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -16,7 +17,7 @@ const ContactForm = () => {
   const [statusMessage, setStatusMessage] = useState("");
   const [copied, setCopied] = useState(false);
 
-  const emailAddress = "azonubigoodnews@gmail.com";
+  const emailAddress = contactEmail;
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(emailAddress);

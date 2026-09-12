@@ -333,15 +333,44 @@
     scroll-behavior: smooth;
   }
 
+  /* Modern Scrollbar - Firefox */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(203, 172, 249, 0.4) rgba(0, 3, 25, 0.95);
+    @apply font-sans;
+  }
+
+  /* Modern Scrollbar - WebKit (Chrome, Safari, Edge, Opera) */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #000319;
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, rgba(203, 172, 249, 0.3) 0%, rgba(57, 59, 178, 0.5) 50%, rgba(203, 172, 249, 0.3) 100%);
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    transition: background 0.3s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, rgba(203, 172, 249, 0.7) 0%, rgba(88, 92, 236, 0.8) 50%, rgba(203, 172, 249, 0.7) 100%);
+    border: 1px solid transparent;
+    background-clip: padding-box;
+  }
+
   body {
     @apply bg-background text-foreground;
   }
 
   button {
     @apply outline-none;
-  }
-  html {
-    @apply font-sans;
   }
 }
 

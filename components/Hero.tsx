@@ -3,12 +3,13 @@ import { Spotlight } from "./ui/spotlight";
 import MagicButton from "./ui/magic-button";
 import { TextGenerateEffect } from "./ui/text-generate-effect";
 import { FaLocationArrow } from "react-icons/fa";
+import { FaTerminal } from "react-icons/fa6";
 import { IoDocumentTextOutline } from "react-icons/io5";
-import { resumeUrl } from "@/data";
+import { resumeUrl, socialMedia } from "@/data";
 
 const Hero = () => {
   return (
-    <div className="pb-16 pt-24 md:pt-20 relative scroll-mt-0" id="home">
+    <div className="pb-16 pt-24 md:pt-12 relative scroll-mt-0" id="home">
       <div>
         <Spotlight
           className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
@@ -34,9 +35,18 @@ const Hero = () => {
       </div>
       <div className="flex justify-center relative my-8 md:my-12 z-10">
         <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center">
-          <p className="uppercase tracking-widest text-xs text-center text-blue-100 max-w-md">
-            Architecting Robust Backends & Cloud Infrastructure
-          </p>
+          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-purple/30 bg-purple/10 backdrop-blur-md shadow-[0_0_20px_rgba(203,172,249,0.15)] hover:border-purple/50 transition-all duration-300">
+            <span className="flex items-center justify-center w-5 h-5 rounded-full bg-purple/20 text-purple text-[10px]">
+              <FaTerminal />
+            </span>
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+            </span>
+            <span className="text-[11px] sm:text-xs font-semibold tracking-wider text-purple uppercase font-mono">
+              Architecting Robust Backends &amp; Cloud Infrastructure
+            </span>
+          </div>
 
           <TextGenerateEffect
             duration={3}
@@ -71,6 +81,23 @@ const Hero = () => {
                 View Resume
               </span>
             </a>
+          </div>
+
+          {/* Top Social Links */}
+          <div className="flex items-center justify-center gap-3 mt-8">
+            <span className="text-xs text-white-200/50 font-mono mr-1">Connect:</span>
+            {socialMedia.map((info) => (
+              <a
+                href={info.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                key={info.id}
+                aria-label="Link to social profile"
+                className="w-9 h-9 flex justify-center items-center backdrop-blur-md bg-black-200/80 rounded-xl border border-white/10 hover:border-purple/50 hover:bg-purple/10 text-white-200 hover:text-white transition-all duration-200 active:scale-95 shadow-sm"
+              >
+                <img src={info.img} alt="social icon" width={16} height={16} className="opacity-80 hover:opacity-100" />
+              </a>
+            ))}
           </div>
         </div>
       </div>
