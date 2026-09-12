@@ -19,9 +19,24 @@ const geistMono = Geist_Mono({
 // });
 
 export const metadata: Metadata = {
-  title: "Portfolio",
+  title: "Goodnews Azonubi | Backend & DevOps Engineer (Fullstack)",
   description:
-    "Modern & Minimalist Portfolio built with Next.js 16, TailwindCSS, and TypeScript.",
+    "Portfolio of Goodnews Azonubi — Backend & DevOps Engineer specializing in scalable server architecture, resilient REST APIs, AWS cloud infrastructure, Docker, CI/CD, and fullstack modern web applications.",
+  keywords: [
+    "Backend Developer",
+    "DevOps Engineer",
+    "Cloud Engineer",
+    "AWS",
+    "Docker",
+    "Terraform",
+    "CI/CD",
+    "Node.js",
+    "Next.js",
+    "PostgreSQL",
+    "TypeScript",
+    "REST APIs",
+    "Fullstack Developer",
+  ],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
