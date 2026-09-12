@@ -9,7 +9,7 @@ import { resumeUrl, socialMedia } from "@/data";
 
 const Hero = () => {
   return (
-    <div className="pb-16 pt-24 md:pt-12 relative scroll-mt-0" id="home">
+    <div className="pb-16 pt-15 md:pt-12 relative scroll-mt-0" id="home">
       <div>
         <Spotlight
           className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
