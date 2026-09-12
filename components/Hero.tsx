@@ -35,15 +35,15 @@ const Hero = () => {
       </div>
       <div className="flex justify-center relative my-8 md:my-12 z-10">
         <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center">
-          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-purple/30 bg-purple/10 backdrop-blur-md shadow-[0_0_20px_rgba(203,172,249,0.15)] hover:border-purple/50 transition-all duration-300">
-            <span className="flex items-center justify-center w-5 h-5 rounded-full bg-purple/20 text-purple text-[10px]">
+          <div className="inline-flex items-center justify-center gap-2 sm:gap-2.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-purple/30 bg-purple/10 backdrop-blur-md shadow-[0_0_20px_rgba(203,172,249,0.15)] hover:border-purple/50 transition-all duration-300 max-w-[92vw] text-center">
+            <span className="flex items-center justify-center w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-purple/20 text-purple text-[9px] sm:text-[10px] shrink-0">
               <FaTerminal />
             </span>
-            <span className="relative flex h-2 w-2">
+            <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2 shrink-0">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-emerald-400"></span>
             </span>
-            <span className="text-[11px] sm:text-xs font-semibold tracking-wider text-purple uppercase font-mono">
+            <span className="text-[10px] sm:text-xs font-semibold tracking-wider text-purple uppercase font-mono text-center">
               Architecting Robust Backends &amp; Cloud Infrastructure
             </span>
           </div>
