@@ -7,8 +7,8 @@ import { SectionReveal, StaggerItem } from "./ui/section-reveal";
 const Grid = () => {
   return (
     <section id="about">
-      <SectionReveal stagger staggerDelay={0.12}>
-        <BentoGrid className="w-full py-20">
+      <SectionReveal stagger staggerDelay={0.08}>
+        <BentoGrid className="w-full py-16 sm:py-20">
           {gridItems.map(
             (
               {
@@ -40,7 +40,7 @@ const Grid = () => {
                 <StaggerItem
                   key={id}
                   direction={direction}
-                  offset={22}
+                  offset={16}
                   className={className}
                 >
                   <BentoGridItem

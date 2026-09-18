@@ -8,7 +8,7 @@ import { motion } from "motion/react";
 const Experience = () => {
   return (
     <section id="experience" className="py-20 w-full">
-      <SectionReveal stagger staggerDelay={0.15}>
+      <SectionReveal stagger staggerDelay={0.08}>
         <StaggerItem>
           <h1 className="heading">
             My <span className="text-purple">work experience</span>
@@ -24,7 +24,7 @@ const Experience = () => {
               <StaggerItem
                 key={card.id}
                 direction={direction}
-                offset={24}
+                offset={18}
                 className="h-full flex"
               >
                 <motion.div

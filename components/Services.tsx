@@ -23,9 +23,9 @@ const Services = () => {
   };
 
   return (
-    <section id="services" className="py-24 w-full relative">
-      <SectionReveal stagger staggerDelay={0.15}>
-        <StaggerItem className="flex flex-col items-center justify-center text-center">
+    <section id="services" className="py-20 sm:py-24 w-full relative">
+      <SectionReveal direction="up" offset={16}>
+        <div className="flex flex-col items-center justify-center text-center">
           <span className="uppercase tracking-widest text-xs font-semibold px-4 py-1.5 rounded-full border border-purple/30 bg-purple/10 text-purple mb-4">
             Services & Capabilities
           </span>
@@ -35,20 +35,22 @@ const Services = () => {
           <p className="text-white-200 mt-4 max-w-xl text-sm md:text-base">
             Tailored backend, DevOps, and fullstack engineering solutions designed to elevate your product, ensure high performance, and drive tangible business results.
           </p>
-        </StaggerItem>
+        </div>
+      </SectionReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16 w-full">
+      <SectionReveal stagger staggerDelay={0.08} className="w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-14 sm:mt-16 w-full">
           {services.map((service, index) => {
             const direction = index === 0 ? "left" : index === 1 ? "up" : "right";
             return (
               <StaggerItem
                 key={service.id}
                 direction={direction}
-                offset={22}
+                offset={18}
                 className="h-full"
               >
                 <motion.div
-                  whileHover={{ y: -5, transition: { duration: 0.2, ease: "easeOut" } }}
+                  whileHover={{ y: -5, transition: { duration: 0.18, ease: "easeOut" } }}
                   className="relative group rounded-3xl border border-white/10 bg-black-200/60 backdrop-blur-xl p-8 flex flex-col justify-between transition-colors duration-200 hover:border-purple/50 hover:shadow-[0_0_30px_rgba(203,172,249,0.15)] overflow-hidden h-full"
                 >
                   {/* Top gradient highlight on hover */}

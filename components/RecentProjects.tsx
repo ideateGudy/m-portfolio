@@ -8,10 +8,10 @@ import { motion } from "motion/react";
 
 const RecentProjects = () => {
   return (
-    <section id="projects" className="py-24 w-full relative">
-      <SectionReveal stagger staggerDelay={0.15}>
+    <section id="projects" className="py-20 sm:py-24 w-full relative">
+      <SectionReveal direction="up" offset={16}>
         {/* Section Header */}
-        <StaggerItem className="flex flex-col items-center justify-center text-center">
+        <div className="flex flex-col items-center justify-center text-center">
           <span className="uppercase tracking-widest text-xs font-semibold px-4 py-1.5 rounded-full border border-purple/30 bg-purple/10 text-purple mb-4">
             Featured Work
           </span>
@@ -21,10 +21,12 @@ const RecentProjects = () => {
           <p className="text-white-200 mt-4 max-w-xl text-sm md:text-base font-light">
             Real-world applications crafted with modern frontend architecture, interactive animations, and responsive design.
           </p>
-        </StaggerItem>
+        </div>
+      </SectionReveal>
 
-        {/* Agency-style Card Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 mt-16 w-full max-w-6xl mx-auto">
+      {/* Agency-style Card Grid with independent row reveals for smooth scrolling */}
+      <SectionReveal stagger staggerDelay={0.08} className="mt-14 sm:mt-16 w-full max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 w-full">
           {projects.map(({ id, title, des, img, iconLists, link }, index) => {
             const displayLink = link.startsWith("http")
               ? link
@@ -34,11 +36,11 @@ const RecentProjects = () => {
               <StaggerItem
                 key={id}
                 direction={index % 2 === 0 ? "left" : "right"}
-                offset={24}
+                offset={18}
                 className="h-full"
               >
                 <motion.div
-                  whileHover={{ y: -6, transition: { duration: 0.2, ease: "easeOut" } }}
+                  whileHover={{ y: -5, transition: { duration: 0.18, ease: "easeOut" } }}
                   className="group relative flex flex-col justify-between rounded-3xl border border-white/10 bg-black-200/50 backdrop-blur-xl p-6 sm:p-7 transition-colors duration-200 hover:border-purple/50 hover:shadow-[0_0_35px_rgba(203,172,249,0.18)] overflow-hidden h-full"
                 >
                   {/* Top gradient highlight on hover */}

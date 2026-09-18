@@ -12,16 +12,16 @@ const CanvasRevealEffect = dynamic(
 const Approach = () => {
   return (
     <section className="w-full py-20 hidden md:block">
-      <SectionReveal stagger staggerDelay={0.15}>
-        <StaggerItem direction="up">
+      <SectionReveal stagger staggerDelay={0.08}>
+        <StaggerItem direction="up" offset={16}>
           <h1 className="heading">
             My <span className="text-purple">approach</span>
           </h1>
         </StaggerItem>
       {/* remove bg-white dark:bg-black */}
-      <div className="my-20 flex flex-col lg:flex-row items-center justify-center w-full gap-4">
+      <div className="my-16 sm:my-20 flex flex-col lg:flex-row items-center justify-center w-full gap-4">
         {/* Phase 1: Slides in from left */}
-        <StaggerItem direction="left" offset={24} className="w-full">
+        <StaggerItem direction="left" offset={18} className="w-full">
           <Card
             title="Planning & Strategy"
             icon={<AceternityIcon order="Phase 1" />}
@@ -37,7 +37,7 @@ const Approach = () => {
         </StaggerItem>
 
         {/* Phase 2: Rises up from bottom */}
-        <StaggerItem direction="up" offset={24} className="w-full">
+        <StaggerItem direction="up" offset={18} className="w-full">
           <Card
             title="Development & Progress Update"
             icon={<AceternityIcon order="Phase 2" />}
@@ -58,7 +58,7 @@ const Approach = () => {
         </StaggerItem>
 
         {/* Phase 3: Slides in from right */}
-        <StaggerItem direction="right" offset={24} className="w-full">
+        <StaggerItem direction="right" offset={18} className="w-full">
           <Card
             title="Development & Launch"
             icon={<AceternityIcon order="Phase 3" />}
