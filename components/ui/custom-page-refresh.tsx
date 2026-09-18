@@ -140,7 +140,7 @@ export const CustomPageRefresh = () => {
             transition={{ duration: 0.18, ease: "easeOut" }}
             whileHover={{ scale: 1.08, transition: { duration: 0.15 } }}
             whileTap={{ scale: 0.92 }}
-            className="fixed bottom-20 sm:bottom-24 right-6 z-40"
+            className="fixed bottom-20 sm:bottom-24 right-4 sm:right-6 z-40"
           >
             <button
               type="button"
