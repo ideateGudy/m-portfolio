@@ -136,20 +136,21 @@ export const ContactModal = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
             onClick={onClose}
             className="fixed inset-0 bg-black/80 backdrop-blur-md"
           />
 
           {/* Modal Container */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            initial={{ opacity: 0, scale: 0.95, y: -10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
+            exit={{ opacity: 0, scale: 0.96, y: -8 }}
+            transition={{ duration: 0.18, ease: "easeOut" }}
             role="dialog"
             aria-modal="true"
             aria-labelledby="modal-title"
-            className="relative w-full max-w-2xl bg-black-100/95 border border-white/20 rounded-3xl p-6 sm:p-8 shadow-[0_0_50px_rgba(203,172,249,0.2)] z-10 max-h-[92vh] overflow-y-auto"
+            className="relative w-full max-w-2xl bg-black-100/95 border border-white/20 rounded-3xl p-6 sm:p-8 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7),0_0_35px_rgba(203,172,249,0.2)] z-10 max-h-[92vh] overflow-y-auto"
           >
             {/* Close Button */}
             <button

@@ -58,8 +58,8 @@ export const createDirectionVariants = (
       x: 0,
       y: 0,
       transition: {
-        duration: 0.65,
-        ease: [0.21, 0.47, 0.32, 0.98],
+        duration: 0.5,
+        ease: "easeOut",
       },
     },
   };

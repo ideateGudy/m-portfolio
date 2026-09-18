@@ -3,6 +3,7 @@
 import ContactForm from "./ContactForm";
 import { navItems, socialMedia } from "@/data";
 import { SectionReveal } from "./ui/section-reveal";
+import { motion } from "motion/react";
 
 const Footer = () => {
   return (
@@ -36,29 +37,32 @@ const Footer = () => {
         {/* Quick nav links */}
         <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-white-200">
           {navItems.map((item) => (
-            <a
+            <motion.a
               key={item.name}
               href={item.link}
+              whileHover={{ y: -1, color: "#CBACF9", transition: { duration: 0.15 } }}
               className="hover:text-purple transition-colors"
             >
               {item.name}
-            </a>
+            </motion.a>
           ))}
         </div>
 
         {/* Social media links */}
         <div className="flex items-center gap-3">
           {socialMedia.map((info) => (
-            <a
+            <motion.a
               href={info.link}
               target="_blank"
               rel="noopener noreferrer"
               key={info.id}
               aria-label={`Link to social profile`}
-              className="w-10 h-10 flex justify-center items-center backdrop-blur-lg bg-black-200/80 rounded-xl border border-white/10 hover:border-purple/50 hover:bg-purple/10 transition-all duration-200 active:scale-95"
+              whileHover={{ y: -2, scale: 1.08, transition: { duration: 0.15 } }}
+              whileTap={{ scale: 0.95 }}
+              className="w-10 h-10 flex justify-center items-center backdrop-blur-lg bg-black-200/80 rounded-xl border border-white/10 hover:border-purple/50 hover:bg-purple/10 transition-colors duration-200 shadow-sm"
             >
               <img src={info.img} alt="social icon" width={18} height={18} />
-            </a>
+            </motion.a>
           ))}
         </div>
       </div>

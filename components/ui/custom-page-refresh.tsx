@@ -134,10 +134,12 @@ export const CustomPageRefresh = () => {
       <AnimatePresence>
         {showScrollTop && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            initial={{ opacity: 0, scale: 0.9, y: 12 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            transition={{ duration: 0.2 }}
+            exit={{ opacity: 0, scale: 0.9, y: 12 }}
+            transition={{ duration: 0.18, ease: "easeOut" }}
+            whileHover={{ scale: 1.08, transition: { duration: 0.15 } }}
+            whileTap={{ scale: 0.92 }}
             className="fixed bottom-20 sm:bottom-24 right-6 z-40"
           >
             <button
@@ -145,7 +147,7 @@ export const CustomPageRefresh = () => {
               onClick={scrollToTop}
               aria-label="Back to top"
               title="Back to top"
-              className="w-11 h-11 rounded-full border border-purple/40 bg-black-200/90 hover:bg-purple/20 backdrop-blur-xl flex items-center justify-center text-purple hover:text-white hover:border-purple/80 shadow-[0_0_20px_rgba(203,172,249,0.3)] transition-all duration-200 active:scale-90 cursor-pointer group"
+              className="w-11 h-11 rounded-full border border-purple/40 bg-black-200/90 hover:bg-purple/20 backdrop-blur-xl flex items-center justify-center text-purple hover:text-white hover:border-purple/80 shadow-[0_0_20px_rgba(203,172,249,0.3)] transition-colors duration-200 cursor-pointer group"
             >
               <FaArrowUp className="text-sm group-hover:-translate-y-0.5 transition-transform duration-200" />
             </button>

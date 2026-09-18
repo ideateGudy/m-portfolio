@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import { IoCopyOutline } from "react-icons/io5";
 import { useState, useEffect } from "react";
 import { contactEmail } from "@/data";
+import { motion } from "motion/react";
 
 const GridGlobe = dynamic(() => import("./grid-globe"), {
   ssr: false,
@@ -90,9 +91,10 @@ export const BentoGridItem = ({
   };
 
   return (
-    <div
+    <motion.div
+      whileHover={{ y: -4, transition: { duration: 0.2, ease: "easeOut" } }}
       className={cn(
-        "relative group/bento shadow-input row-span-1 flex flex-col justify-between space-y-4 rounded-3xl border border-white/10 transition duration-200 hover:shadow-xl dark:shadow-none overflow-hidden",
+        "relative group/bento shadow-input row-span-1 flex flex-col justify-between space-y-4 rounded-3xl border border-white/10 transition-colors duration-200 hover:border-purple/40 hover:shadow-xl dark:shadow-none overflow-hidden",
         className,
       )}
       style={{
@@ -215,6 +217,6 @@ export const BentoGridItem = ({
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };

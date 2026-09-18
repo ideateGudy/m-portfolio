@@ -90,17 +90,19 @@ export const FloatingNav = ({
                   ? icons[navItem.icon as keyof typeof icons]
                   : FaLocationArrow;
               return (
-                <a
+                <motion.a
                   key={`link-${idx}`}
                   href={navItem.link}
                   aria-label={navItem.name}
+                  whileHover={{ y: -1, transition: { duration: 0.15 } }}
+                  whileTap={{ scale: 0.95 }}
                   className={cn(
                     "relative flex items-center justify-center gap-1.5 rounded-full px-2.5 py-1.5 sm:px-3 sm:py-1.5 text-xs sm:text-sm font-medium text-neutral-300 transition-colors hover:bg-white/10 hover:text-white"
                   )}
                 >
                   <IconComponent className="h-4 w-4 shrink-0 text-purple block sm:hidden" />
                   <span className="hidden sm:block">{navItem.name}</span>
-                </a>
+                </motion.a>
               );
             })}
           </div>

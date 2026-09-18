@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { FaPaperPlane, FaCheckCircle, FaExclamationCircle } from "react-icons/fa";
 import { IoCopyOutline, IoMailOutline } from "react-icons/io5";
 import { contactEmail } from "@/data";
+import { motion, AnimatePresence } from "motion/react";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -115,14 +116,16 @@ const ContactForm = () => {
               </div>
             </div>
 
-            <button
+            <motion.button
               type="button"
               onClick={handleCopyEmail}
-              className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl border border-white/10 hover:border-purple/40 bg-white/5 hover:bg-purple/10 text-xs font-medium text-white transition-all active:scale-98"
+              whileHover={{ y: -1, scale: 1.01, transition: { duration: 0.15 } }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl border border-white/10 hover:border-purple/40 bg-white/5 hover:bg-purple/10 text-xs font-medium text-white transition-colors cursor-pointer"
             >
               <IoCopyOutline className="text-purple" />
               <span>{copied ? "Email copied to clipboard!" : "Copy email address"}</span>
-            </button>
+            </motion.button>
           </div>
         </div>
 
@@ -198,31 +201,47 @@ const ContactForm = () => {
           />
         </div>
 
-        {status === "success" && (
-          <div className="flex items-center gap-2 p-3 rounded-xl bg-emerald-950/60 border border-emerald-500/40 text-emerald-300 text-xs">
-            <FaCheckCircle className="shrink-0" />
-            <span>{statusMessage}</span>
-          </div>
-        )}
+        <AnimatePresence>
+          {status === "success" && (
+            <motion.div
+              initial={{ opacity: 0, y: -6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.18, ease: "easeOut" }}
+              className="flex items-center gap-2 p-3 rounded-xl bg-emerald-950/60 border border-emerald-500/40 text-emerald-300 text-xs"
+            >
+              <FaCheckCircle className="shrink-0" />
+              <span>{statusMessage}</span>
+            </motion.div>
+          )}
 
-        {status === "error" && (
-          <div className="flex items-center gap-2 p-3 rounded-xl bg-rose-950/60 border border-rose-500/40 text-rose-300 text-xs">
-            <FaExclamationCircle className="shrink-0" />
-            <span>{statusMessage}</span>
-          </div>
-        )}
+          {status === "error" && (
+            <motion.div
+              initial={{ opacity: 0, y: -6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.18, ease: "easeOut" }}
+              className="flex items-center gap-2 p-3 rounded-xl bg-rose-950/60 border border-rose-500/40 text-rose-300 text-xs"
+            >
+              <FaExclamationCircle className="shrink-0" />
+              <span>{statusMessage}</span>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
-        <button
+        <motion.button
           type="submit"
           disabled={status === "submitting"}
-          className="relative inline-flex h-12 w-full overflow-hidden rounded-xl p-[1px] focus:outline-none transition-transform active:scale-98 disabled:opacity-60 cursor-pointer"
+          whileHover={{ y: -1, transition: { duration: 0.15 } }}
+          whileTap={{ scale: 0.98 }}
+          className="relative inline-flex h-12 w-full overflow-hidden rounded-xl p-[1px] focus:outline-none disabled:opacity-60 cursor-pointer"
         >
           <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
           <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-xl bg-slate-950 px-7 text-sm font-medium text-white backdrop-blur-3xl gap-2 hover:bg-slate-900 transition-colors">
             <FaPaperPlane className="text-purple text-xs" />
             <span>{status === "submitting" ? "Sending Message..." : "Send Message"}</span>
           </span>
-        </button>
+        </motion.button>
       </form>
     </div>
   );
