@@ -124,37 +124,38 @@ export const gridItems = [
 export const projects = [
   {
     id: 1,
-    title: "3D Solar System Planets to Explore",
-    des: "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
-    img: "/p1.webp",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
-    link: "/ui.earth.com",
+    title: "My Portfolio",
+    des: "A modern fullstack developer portfolio showcasing my backend, DevOps, cloud, and fullstack engineering experience, services, projects, and technical expertise.",
+    img: "/proj/b.webp",
+    iconLists: ["/next.svg", "/tail.svg", "/ts.svg"],
+    link: "https://dev.ideategudy.tech/",
   },
   {
     id: 2,
-    title: "Yoom - Video Conferencing App",
-    des: "Simplify your video conferencing experience with Yoom. Seamlessly connect with colleagues and friends.",
-    img: "/p2.webp",
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
-    link: "/ui.yoom.com",
+    title: "Brainwave - AI Landing Page",
+    des: "A modern AI-focused landing page built with React and TypeScript, featuring a polished interface, responsive layouts, and interactive sections designed for an AI product.",
+    img: "/proj/d.webp",
+    iconLists: ["/re.svg", "/tail.svg", "/ts.svg"],
+    link: "https://brainwave-two-umber.vercel.app/",
   },
   {
     id: 3,
-    title: "AI Image SaaS - Canva Application",
-    des: "A REAL Software-as-a-Service app with AI features and a payments and credits system using the latest tech stack.",
-    img: "/p3.webp",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
-    link: "/ui.aiimg.com",
+    title: "Stacklenzz - Developer Observability Platform",
+    des: "A developer-first observability ecosystem for Node.js backends with Express and NestJS telemetry, Prometheus metrics, structured logging, error tracking, and React/Next.js dashboards.",
+    img: "/proj/c.webp",
+    iconLists: ["/re.svg", "/ts.svg", "/node.svg", "/next.svg", ],
+    link: "https://stacklenzz.vercel.app/",
   },
   {
     id: 4,
-    title: "Animated Apple Iphone 3D Website",
-    des: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
-    img: "/p4.webp",
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.webp"],
-    link: "/ui.apple.com",
+    title: "Apple Verse - 3D Apple Website",
+    des: "A recreation of Apple's product experience featuring immersive 3D visuals, smooth animations, and an interactive modern interface inspired by the Apple website.",
+    img: "/proj/a.webp",
+    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.webp"],
+    link: "https://apple-verse.vercel.app/",
   },
 ];
+
 
 export const testimonials = [
   {
