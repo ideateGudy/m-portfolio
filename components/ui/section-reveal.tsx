@@ -29,7 +29,7 @@ export const containerVariants: Variants = {
 
 export const createDirectionVariants = (
   direction: AnimationDirection = "up",
-  distance: number = 24
+  distance: number = 18
 ): Variants => {
   let initialX = 0;
   let initialY = 0;
@@ -58,23 +58,23 @@ export const createDirectionVariants = (
       x: 0,
       y: 0,
       transition: {
-        duration: 0.5,
-        ease: "easeOut",
+        duration: 0.45,
+        ease: [0.16, 1, 0.3, 1], // ultra-smooth spring-like cubic-bezier easeOut
       },
     },
   };
 };
 
-export const itemVariants: Variants = createDirectionVariants("up", 20);
+export const itemVariants: Variants = createDirectionVariants("up", 16);
 
 export const SectionReveal = ({
   children,
   className,
   delay = 0,
   direction = "up",
-  offset = 18,
+  offset = 16,
   stagger = false,
-  staggerDelay = 0.12,
+  staggerDelay = 0.1,
   ...props
 }: SectionRevealProps) => {
   const variants = createDirectionVariants(direction, offset);
@@ -86,8 +86,8 @@ export const SectionReveal = ({
         custom={staggerDelay}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.15, margin: "0px 0px -50px 0px" }}
-        className={cn("w-full", className)}
+        viewport={{ once: true, amount: 0.02, margin: "0px 0px 80px 0px" }}
+        className={cn("w-full will-change-transform", className)}
         {...props}
       >
         {children}
@@ -100,8 +100,8 @@ export const SectionReveal = ({
       variants={variants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.15, margin: "0px 0px -50px 0px" }}
-      className={cn("w-full", className)}
+      viewport={{ once: true, amount: 0.02, margin: "0px 0px 80px 0px" }}
+      className={cn("w-full will-change-transform", className)}
       {...props}
     >
       {children}
@@ -118,7 +118,7 @@ export const StaggerItem = ({
   children,
   className,
   direction = "up",
-  offset = 20,
+  offset = 16,
   variants,
   ...props
 }: StaggerItemProps) => {
@@ -127,7 +127,7 @@ export const StaggerItem = ({
   return (
     <motion.div
       variants={computedVariants}
-      className={className}
+      className={cn("will-change-transform", className)}
       {...props}
     >
       {children}

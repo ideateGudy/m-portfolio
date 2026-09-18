@@ -8,8 +8,8 @@ export const CustomPageRefresh = () => {
   // 1. Continuous Scroll Progress Bar at the top of the screen
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
+    stiffness: 200,
+    damping: 35,
     restDelta: 0.001,
   });
 
